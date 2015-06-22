@@ -1,0 +1,11 @@
+---
+- name: Configure zabbix_agentd.conf
+  template:
+   src={{ zabbix_agent_major_version }}/zabbix_agentd.conf.j2
+   dest=/etc/zabbix/zabbix_agentd.conf
+   backup=yes
+   owner=0
+   group=0
+   mode=0644
+  notify:
+   - Restart Zabbix Agent

@@ -1,0 +1,40 @@
+---
+zabbix_agent_major_version: '2.4'
+zabbix_agent_version: ''
+zabbix_agent_service: 'zabbix-agent'
+zabbix_gid: '497'
+zabbix_uid: '498'
+zabbix_agent_packages:
+   - zabbix-agent
+   - zabbix-get
+   - zabbix-sender
+
+############ GENERAL PARAMETERS #################
+# "PidFile": '/var/run/zabbix/zabbix_agentd.pid'
+# "LogFile": '/var/log/zabbix/zabbix_agentd.log'
+"LogFileSize": '0'
+"DebugLevel": '3'
+# "SourceIP": ''
+"EnableRemoteCommands": '1'
+"LogRemoteCommands": 1
+"zabbix_server": '127.0.0.1'
+"ListenPort": '10050'
+"ListenIP": '0.0.0.0'
+"StartAgents": '10'
+"ServerActive": '127.0.0.1:10051'
+"Hostname": '{{ ansible_hostname }}'
+# "HostnameItem": 'system.hostname'
+# "HostMetadata": ''
+# "HostMetadataItem": ''
+"RefreshActiveChecks": '60'
+"BufferSend": '3600'
+"BufferSize": '65535'
+"MaxLinesPerSecond": '1000'
+# "AllowRoot": '0'
+############ ADVANCED PARAMETERS #################
+# "Alias": ''
+"Timeout": '30'
+# "Include": '/etc/zabbix/zabbix_agentd/'
+####### USER-DEFINED MONITORED PARAMETERS #######
+# "UnsafeUserParameters": '0'
+# "UserParameter": ''

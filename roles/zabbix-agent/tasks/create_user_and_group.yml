@@ -1,0 +1,14 @@
+---
+- name: Add the group 'zabbix'
+  command: /usr/sbin/groupadd -g {{ zabbix_gid }} zabbix
+  ignore_errors: yes
+
+- name: Add the user 'zabbix' (RedHat|CnetOS)
+  command: /usr/sbin/useradd -g zabbix -c "Zabbix Monitoring System" -d /var/lib/zabbix -s /sbin/nologin -u {{ zabbix_uid }} zabbix
+  ignore_errors: yes
+  when: ansible_os_family=='RedHat'
+
+- name: Add the user 'zabbix' (Debian | Ubuntu)
+  command: /usr/sbin/useradd -g zabbix -c "Zabbix Monitoring System" -d /var/lib/zabbix -s /bin/false -u {{ zabbix_uid }} zabbix
+  ignore_errors: yes
+  when: ansible_os_family=='Debian'

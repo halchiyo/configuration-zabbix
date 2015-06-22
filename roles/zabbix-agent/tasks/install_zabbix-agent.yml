@@ -1,0 +1,15 @@
+---
+- name: Install Zabbix Agent and MISC. (RedHat|CnetOS)
+  yum: name={{ item }} state=present
+  with_items: zabbix_agent_packages
+  when: ansible_os_family=='RedHat'
+
+- name: Install Zabbix Agent and MISC. (Debian | Ubuntu)
+  apt: name={{ item }} state=present
+  with_items: zabbix_agent_packages
+  when: ansible_os_family=='Debian'
+
+- name: service zabbix-agent enable
+  service:
+   name=zabbix-agent
+   enabled=true

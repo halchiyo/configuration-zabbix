@@ -1,0 +1,14 @@
+admin01@dstage01:/etc/zabbix$ ls -alR
+.:
+total 20
+drwxr-xr-x  3 root root 4096 Mar 10 23:52 .
+drwxr-xr-x 75 root root 4096 Mar 12 03:00 ..
+-rw-r--r--  1 root root 7917 Mar 10 23:52 zabbix_agentd.conf
+drwxr-xr-x  2 root root 4096 Mar 10 23:52 zabbix_agentd.d
+
+./zabbix_agentd.d:
+total 12
+drwxr-xr-x 2 root root 4096 Mar 10 23:52 .
+drwxr-xr-x 3 root root 4096 Mar 10 23:52 ..
+-rw-r--r-- 1 root root 1517 Feb 23 21:28 userparameter_mysql.conf
+admin01@dstage01:/etc/zabbix$ 

@@ -1,0 +1,62 @@
+---
+- name: include os-specific variables
+  include_vars: '{{ ansible_distribution }}.yml'
+
+- debug: msg='{{ url_package_release }}'
+
+- name: download release package (RedHat|CnetOS)
+  get_url:
+    url: '{{ url_package_release }}'
+    dest: /tmp/zabbix-release.rpm
+  when:
+    - ansible_os_family=='RedHat'
+    - ansible_distribution_major_version | version_compare('5.0', '>=')
+
+- name: download release package (Debian)
+  get_url:
+    url: '{{ url_package_release }}'
+    dest: /tmp/zabbix-release.deb
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_major_version | version_compare('6.0', '>=')
+
+- name: download release package (Ubuntu)
+  get_url:
+    url: '{{ url_package_release }}'
+    dest: /tmp/zabbix-release.deb
+  when:
+    - ansible_distribution == 'Ubuntu'
+    - ansible_distribution_release | search("precise|trusty")
+
+- name: configure the zabbix repository (RedHat | CnetOS)
+  yum:
+    name=/tmp/zabbix-release.rpm
+    state=present
+  when: ansible_os_family=='RedHat'
+
+- name: configure the zabbix repository (Debian | Ubuntu)
+  apt:
+    deb=/tmp/zabbix-release.deb
+    state=present
+#    update_cache=yes
+  when: ansible_os_family=='Debian'
+
+- name: shell apt-get update (Debian | Ubuntu)
+  apt: update_cache=yes
+  when: ansible_os_family=='Debian'
+
+#- name: shell apt-get update (Debian | Ubuntu)
+#  shell: apt-get update -yq --fix-missing
+#  when: ansible_os_family=='Debian'
+
+- name: remove downloaded release package (RedHat | CnetOS)
+  file:
+    path=/tmp/zabbix-release.rpm
+    state=absent
+  when: ansible_os_family=='RedHat'
+
+- name: remove downloaded release package (Debian | Ubuntu)
+  file:
+    path=/tmp/zabbix-release.deb
+    state=absent
+  when: ansible_os_family=='Debian'

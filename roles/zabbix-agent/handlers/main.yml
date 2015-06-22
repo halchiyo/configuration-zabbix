@@ -1,0 +1,3 @@
+---
+- include: restart_iptables.yml
+- include: restart_zabbix-agent.yml
