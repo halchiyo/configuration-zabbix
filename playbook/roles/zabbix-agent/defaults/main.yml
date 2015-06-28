@@ -1,4 +1,5 @@
 ---
+zabbix_major_version: '2.4'
 zabbix_agent_major_version: '2.4'
 zabbix_agent_version: ''
 zabbix_agent_service: 'zabbix-agent'

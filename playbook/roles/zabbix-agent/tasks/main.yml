@@ -1,5 +1,4 @@
 ---
 - include: create_user_and_group.yml
-- include: repo-zabbix.yml
 - include: install_zabbix-agent.yml
 - include: conf_zabbix-agent-core.yml
