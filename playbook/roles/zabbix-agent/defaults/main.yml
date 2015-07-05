@@ -1,10 +1,9 @@
 ---
-zabbix_major_version: '2.4'
-zabbix_agent_major_version: '2.4'
+# zabbix_major_version: '2.4'
+# zabbix_agent_major_version: '2.4'
+zabbix_agent_major_version: '{{ zabbix_major_version }}'
 zabbix_agent_version: ''
 zabbix_agent_service: 'zabbix-agent'
-zabbix_gid: '497'
-zabbix_uid: '498'
 zabbix_agent_packages:
    - zabbix-agent
    - zabbix-get

@@ -4,7 +4,7 @@
 
 - debug: msg='{{ url_package_release }}'
 
-- name: download release package (RedHat|CnetOS)
+- name: download release package (RedHat | CentOS)
   get_url:
     url: '{{ url_package_release }}'
     dest: /tmp/zabbix-release.rpm
@@ -28,7 +28,7 @@
     - ansible_distribution == 'Ubuntu'
     - ansible_distribution_release | search("precise|trusty")
 
-- name: configure the zabbix repository (RedHat | CnetOS)
+- name: configure the zabbix repository (RedHat | CentOS)
   yum:
     name=/tmp/zabbix-release.rpm
     state=present
@@ -49,7 +49,7 @@
 #  shell: apt-get update -yq --fix-missing
 #  when: ansible_os_family=='Debian'
 
-- name: remove downloaded release package (RedHat | CnetOS)
+- name: remove downloaded release package (RedHat | CentOS)
   file:
     path=/tmp/zabbix-release.rpm
     state=absent

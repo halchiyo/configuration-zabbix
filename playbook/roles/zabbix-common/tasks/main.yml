@@ -1,2 +1,4 @@
 ---
 - include: repo-zabbix.yml
+- include: create_user_and_group.yml
+  when: COMMON_ENABLE_SETUIDGID 

@@ -1,5 +1,5 @@
 ---
-- name: Install Zabbix Agent and MISC. (RedHat|CnetOS)
+- name: Install Zabbix Agent and MISC. (RedHat | CentOS)
   yum: name={{ item }} state=present
   with_items: zabbix_agent_packages
   when: ansible_os_family=='RedHat'
